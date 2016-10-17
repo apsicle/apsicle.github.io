@@ -29,7 +29,7 @@ h1{
 }
 
 #clock > div{
-    padding: 10px;
+    padding: 5px;
     border-radius: 3px;
     background: #FFBF00;
     display: inline-block;
@@ -42,6 +42,22 @@ h1{
 	font-size:10px
     display: inline-block;
 }
+
+
+.house img{
+	height='100'; width='100'
+	alt='The Devil lives next door'
+	}
+	
+.paragraph{
+	font-family: 'Serif';
+	color: white;
+	display: inline-block;
+	text-align: left;
+	max-width: 10em;
+	max-width: 55ch;
+	font-size: 17px;
+	}
 
 .smalltext{
     padding-top: 5px;
