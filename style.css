@@ -4,6 +4,8 @@ src: url('youmurderer.ttf')
 format('truetype');
 }
 
+
+
 body{
     text-align: center;
     background: #00ECB9;
@@ -59,6 +61,16 @@ h1{
 	font-size: 17px;
 	}
 
+.hidden{
+	font-family: 'Serif';
+	color: black;
+	display: inline-block;
+	text-align: left;
+	max-width: 10em;
+	max-width: 55ch;
+	font-size: 17px;
+	}
+	
 .smalltext{
     padding-top: 5px;
     font-size: 20px;
