@@ -24,6 +24,8 @@
 <body class="c2">
 
 	<script src = "input.js"></script>
+	<script src = "test.js"></script>
+	<script src = "response.js"></script>
 	
 	<!--Board-->
 	<div class="ouija">
@@ -37,10 +39,12 @@
 	<button type='submit'>Ask</button> 
 	</form>
 	
-  <div class="paragraph">
-  
-  <p id="clue">The crystal planchette stands motionless on the board</p>
-
-  </div>
+	<p id="clue" class = "paragraph">The crystal planchette sits motionless on the ouija board.</p>
+	<br>
+	<p id="c_1" class = "paragraph" onclick = "return response(1)"></p>
+	<br>
+	<p id="c_2" class = "paragraph" onclick = "return response(2)"></p>
+	
+	
 </body>
 </html>
