@@ -20,6 +20,29 @@ function response(selection) {
 		printLetterByLetter("clue", msg, 100);
 	}
 	
+	function check(substring) {
+		if (input.indexOf(substring) == -1) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	function doResponse2(str1, str2, str3) {
+		read(str1);
+		var time1 = str1.length * 100;
+		setTimeout(function() { c_1.innerHTML = str2; }, time1 + 500);
+		setTimeout(function() { c_2.innerHTML = str3; }, time1 + 1000);
+	}
+		
+	function doResponse1(str1, str2) {
+		read(str1);
+		var time1 = str1.length * 100;
+		setTimeout(function() { c_1.innerHTML = str2; }, time1 + 500);
+	}
+
+	
 
 	/*Enter the cases here. 
 	1) Change output.innerHTML = 'xyz'
@@ -43,7 +66,20 @@ function response(selection) {
 	}
 	else if (hidden == "I don't trust you...") {
 		if(selection == 1) {
-			read("Give me some time...");
+			read("I don't even know what happened to me... Maybe you can find something trigger my memory.");
+		}
+	}
+	else if (hidden == "He's bad. He's a bad man!") {
+		if(selection == 1) {
+			read("He said he didn't want to hurt me. But he's a liar!");
+		}
+		else if(selection == 2) {
+			read("I don't want to talk about the bad man!");
+		}
+	}
+	else if (hidden == "Burning, whispers, yearnings, fleeting, floating, turning, never to be returning") {
+		if (selection == 1) {
+			doResponse1("I'm sorry, was I saying something?", "1.) Don't Respond.");
 		}
 	}
 	else {

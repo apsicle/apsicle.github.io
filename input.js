@@ -26,13 +26,41 @@ function submission() {
 		printLetterByLetter("clue", msg, 100);
 	}
 	
+	function check(substring) {
+		if (input.indexOf(substring) == -1) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 	
+	function doResponse2(str1, str2, str3) {
+		read(str1);
+		var time1 = str1.length * 100;
+		setTimeout(function() { c_1.innerHTML = str2; }, time1 + 500);
+		setTimeout(function() { c_2.innerHTML = str3; }, time1 + 1000);
+	}
+		
+	function doResponse1(str1, str2) {
+		read(str1);
+		var time1 = str1.length * 100;
+		setTimeout(function() { c_1.innerHTML = str2; }, time1 + 500);
+	}
+
 
 	/*Enter the cases here. 
 	1) Change output.innerHTML = 'xyz'
 	2) Popup via "alert('xyz')"
 	3) Do something else.
 	*/
+	
+	//To add:
+	//what are you
+	//formaldehyde
+	//candlesticks
+	//emily
+	//halloween, trick r treak, pillowcases
 	var hidden = output.innerHTML; // retrieves what was last said...
 	var c_1 = document.getElementById("c_1");
 	c_1.innerHTML = "";
@@ -57,6 +85,9 @@ function submission() {
 	}
 	else if (input.indexOf("bye") !== -1) {
 		printLetterByLetter("clue", "I don't want to be here anymore...", 100);
+	}
+	else if (input == "how old are you") {
+		read("Don't ask me that!");
 	}
 	else if (input == "who are you" || input.indexOf("speaking") !== -1 || input.indexOf("talking") !== -1 || input == "who is this") {
 		prob = Math.random();
@@ -83,13 +114,8 @@ function submission() {
 	//End intro section
 	else if (input.indexOf("your name") !== -1 || input.indexOf("you called") !== -1) {
 		printLetterByLetter("clue", "I think my name was Emily...", 100);
-	}
+	}	
 	
-	//Flavor Clues
-	else if (input.indexOf("book") !== -1) {
-		//Checks if 'book' is a substring of input string		
-		printLetterByLetter("clue", "I think I saw him moving something on the bookshelf.", 100);
-	}
 	//How can we help you?
 	else if (input.indexOf("help") !== -1 || input.indexOf("you want") !== -1) {
 		prob = Math.random();
@@ -97,14 +123,13 @@ function submission() {
 			printLetterByLetter("clue", "I don't want to be here anymore", 100);
 		}
 		else {
-			printLetterByLetter("clue", "I think I'm trapped here...", 100);
+			printLetterByLetter("clue", "I think I'm trapped here... but I don't know how to get out.", 100);
 		}
 	}
 	
 	//Setting you free?
 	else if (input.indexOf("you free") !== -1 || input.indexOf("ritual") !== -1 || input.indexOf("free you") !== -1) {
-			printLetterByLetter("clue", "I don't trust you...", 100);
-			printLetterByLetter("c_1", "1.) I just want to help, I promise I won't hurt you.", 100);
+			doResponse1("I don't trust you...", "1.) I just want to help, I promise I won't hurt you.");
 		}
 	//Basement
 	else if (input.indexOf("basement") !== -1 || input.indexOf("downstairs") !== -1) {
@@ -140,14 +165,55 @@ function submission() {
 	//Is anyone else here?
 	else if (input.indexOf("anyone") !== -1 || input.indexOf("anybody") !== -1 || input.indexOf("else") !== -1) {
 		if (input.indexOf("here") !== -1) {
-			printLetterByLetter("clue", "There was a boy here with me...", 100);
+			printLetterByLetter("clue", "I'm sorry, I can't remember.", 100);
 		}
 	}
-	else if (input.indexOf("boy") !== -1 || input.indexOf("pirate") !== -1) {		 
-		printLetterByLetter("clue", "Yes... there was a boy here with me...", 100);
-		printLetterByLetter("c_1", "1.) Who was he", 100);
-		printLetterByLetter("c_2", "2.) What happened to him", 100);
+	
+	//Him...
+	else if (input.indexOf(" man ") !== -1 || input.endsWith("man") || input.indexOf("murderer") !== -1 || input.indexOf("killer") !== -1) {
+		doResponse2("He's bad. He's a bad man!", "1.) What did he do to you?", "2.) What can you tell me about him?");
 	}
+	
+	//Flavor Clues
+	else if (input.indexOf("book") !== -1) {
+		//Checks if 'book' is a substring of input string		
+		read("I think I saw him moving something on the bookshelf.");
+	}
+	else if (input.indexOf("pictures") !== -1) {
+		read("I saw a lot of pictures lying around");
+	}
+	//Formaldehyde
+	else if (input.indexOf("formaldehyde") !== -1) {
+		read("Ugh that horrible smell! All around me...");
+	}
+	//Queen's gambit
+	else if (input.indexOf("queen's gambit") !== -1) {
+		read("The poor woman...");
+	}
+	//Chess
+	else if (input.indexOf("chess") !== -1) {
+		read("I think he plays...");
+	}
+	//Candles
+	else if (check("candles")) {
+		doResponse1("Burning, whispers, yearnings, fleeting, floating, turning, never to be returning", "1.) ...What?");
+	}
+	//Shoes
+	else if (check("shoe")) {
+		read("That's mine! I wonder where the other one is...");
+	}
+	//Resurrection
+	else if (check("resurrection")) {
+		read("You shouldn't read that... He would read it and go mad.");
+	}
+	//Pirate
+	else if (input.indexOf("pirate") !== -1) {		 
+		doResponse2("Yes... there was a boy here with me...", "1.) Who was he", "2.) What happened to him");
+		//printLetterByLetter("clue", "Yes... there was a boy here with me...", 100);
+		//printLetterByLetter("c_1", "1.) Who was he", 100);
+		//printLetterByLetter("c_2", "2.) What happened to him", 100);
+	}
+	//
 	
 	//Easter eggs
 	else if (input.indexOf("kappa") !== -1 || input.indexOf("keepo") !== -1) {
@@ -158,6 +224,9 @@ function submission() {
 	}
 	else if (input == "fight me" || input == "fite me") {
 		printLetterByLetter("clue", "Look in the closet.", 100);
+	}
+	else if (check("fuck") || check("shit") || check("damn")) {
+		read("Don't use that hellish language with me!");
 	}
 	
 	//Default
