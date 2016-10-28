@@ -46,7 +46,13 @@ function submission() {
 	else if ((input.indexOf("no") !== -1 || input.indexOf("not") !== -1 || input.indexOf("won't") !== -1) && hidden == "...m-mister? Are you going to hurt me?"){
 		printLetterByLetter("clue", "I don't believe you.", 100);
 	}
+	else if (input.indexOf("yes") !== -1 && hidden == "...m-mister? Are you going to hurt me?"){
+		printLetterByLetter("clue", "No! Get away from me!", 100);
+	}
 	else if (hidden == "I don't believe you.") {
+		printLetterByLetter("clue", "Get out of here!", 100);
+	}
+	else if (hidden == "No! Get away from me!") {
 		printLetterByLetter("clue", "Get out of here!", 100);
 	}
 	else if (input.indexOf("bye") !== -1) {
