@@ -1,5 +1,3 @@
-
-
 function submission() {
 	/*Grabs textbox input. Strips punctuations + changes to lowercase*/
 	var token = document.getElementById("token").value;
@@ -36,6 +34,7 @@ function submission() {
 	}
 	
 	function doResponse2(str1, str2, str3) {
+		//sets up choices and makes sure the text appears in order
 		read(str1);
 		var time1 = str1.length * 100;
 		setTimeout(function() { c_1.innerHTML = str2; }, time1 + 500);
@@ -110,7 +109,9 @@ function submission() {
 	else if (input.indexOf("boy") !== -1 && input.indexOf("girl") !== -1) {
 		read("What kind of question is that? Leave me alone!");
 	}
-	
+	else if (check("emily")) {
+		doResponse2("...Yes? I'm here.", "We're here to help", "Goodbye");		
+	}
 	//End intro section
 	else if (input.indexOf("your name") !== -1 || input.indexOf("you called") !== -1) {
 		printLetterByLetter("clue", "I think my name was Emily...", 100);
@@ -127,8 +128,16 @@ function submission() {
 		}
 	}
 	
+	//Don't be scared
+	else if (check("why") && check("scared")) {
+		read("Wouldn't you be?");
+	}
+	else if (check("don't") && check("scared")) {
+		read("I can't help it. This house gives me the creeps.");
+	}
+	
 	//Setting you free?
-	else if (input.indexOf("you free") !== -1 || input.indexOf("ritual") !== -1 || input.indexOf("free you") !== -1) {
+	else if (input.indexOf("you free") !== -1 || input.indexOf("ritual") !== -1 || input.indexOf("free you") !== -1 || check("get you out")) {
 			doResponse1("I don't trust you...", "1.) I just want to help, I promise I won't hurt you.");
 		}
 	//Basement
@@ -148,7 +157,7 @@ function submission() {
 			printLetterByLetter("clue", "The man who lived here... he did this to me.", 100);
 		}
 		else if (input.indexOf("how") !== -1) {
-			printLetterByLetter("clue", "That man took us downstairs, but I don't remember what happened after that I was so scared.", 100);
+			printLetterByLetter("clue", "That man took me downstairs, but I don't remember what happened after that I was so scared.", 100);
 		}
 	}
 	
@@ -174,13 +183,18 @@ function submission() {
 		doResponse2("He's bad. He's a bad man!", "1.) What did he do to you?", "2.) What can you tell me about him?");
 	}
 	
+	//Favorites
+	else if (input.indexOf("favorite") !== -1) {
+		read("I don't know anything about that...");
+	}
+	
 	//Flavor Clues
 	else if (input.indexOf("book") !== -1) {
 		//Checks if 'book' is a substring of input string		
 		read("I think I saw him moving something on the bookshelf.");
 	}
-	else if (input.indexOf("pictures") !== -1) {
-		read("I saw a lot of pictures lying around");
+	else if (input.indexOf("pictures") !== -1 || check("photos")) {
+		doResponse1("I saw a lot of pictures of a woman lying around", "Who is she?");
 	}
 	//Formaldehyde
 	else if (input.indexOf("formaldehyde") !== -1) {
@@ -196,7 +210,7 @@ function submission() {
 	}
 	//Candles
 	else if (check("candles")) {
-		doResponse1("Burning, whispers, yearnings, fleeting, floating, turning, never to be returning", "1.) ...What?");
+		doResponse1("Burning, whispers, yearnings, turning, fleeting, spurning, never can be returning", "1.) ...What?");
 	}
 	//Shoes
 	else if (check("shoe")) {
@@ -213,20 +227,38 @@ function submission() {
 		//printLetterByLetter("c_1", "1.) Who was he", 100);
 		//printLetterByLetter("c_2", "2.) What happened to him", 100);
 	}
-	//
+	//Pillowcase
+	else if (input.indexOf("pillowcase") !== -1) {
+		read("Oh, I'm remembering something... 'Trick or Treat! :)'");
+	}
+	//Dress
+	else if (input.indexOf("dress") !== -1 && input.indexOf("dressed") == -1) {
+		read("You found my dress! But it's all torn up and dirty...");
+	}
+	//album
+	else if (input.indexOf("summer of '78") !== -1) {
+		read("He kept playing that over and over. He said it was special to him");
+	}
+	//letter
+	else if (input.indexOf("letter") !== -1) {
+		doResponse1("Hmm? I haven't seen a letter around here. What does it say?", "1.) Read the letter");
+	}
 	
 	//Easter eggs
-	else if (input.indexOf("kappa") !== -1 || input.indexOf("keepo") !== -1) {
+	else if ((input.indexOf("kappa") !== -1 || input.indexOf("keepo") !== -1) && input !== "keepo kappa 123") {
 		read("Everybody type keepo kappa 123 in chat");
 	}
 	else if (input == "keepo kappa 123") {
-		printLetterByLetter("clue", "I'm... remembering something.... http://i.imgur.com/n5LvgA7.gif", 100);
+		printLetterByLetter("clue", "I'm... remembering something... http://i.imgur.com/n5LvgA7.gif", 100);
 	}
 	else if (input == "fight me" || input == "fite me") {
 		printLetterByLetter("clue", "Look in the closet.", 100);
 	}
 	else if (check("fuck") || check("shit") || check("damn")) {
 		read("Don't use that hellish language with me!");
+	}
+	else if (input.indexOf("halloween") !== -1) {
+		read("Never again.");
 	}
 	
 	//Default

@@ -66,7 +66,7 @@ function response(selection) {
 	}
 	else if (hidden == "I don't trust you...") {
 		if(selection == 1) {
-			read("I don't even know what happened to me... Maybe you can find something trigger my memory.");
+			read("I don't even know what happened to me... Maybe you can find something to trigger my memory.");
 		}
 	}
 	else if (hidden == "He's bad. He's a bad man!") {
@@ -80,6 +80,24 @@ function response(selection) {
 	else if (hidden == "Burning, whispers, yearnings, fleeting, floating, turning, never to be returning") {
 		if (selection == 1) {
 			doResponse1("I'm sorry, was I saying something?", "1.) Don't Respond.");
+		}
+	}
+	else if (hidden == "...Yes?") {
+		if (selection == 1) {
+			read("Thank you...");
+		}
+		else if (selection == 2) {
+			read("Please be careful.");
+		}
+	}
+	else if (hidden == "I saw a lot of pictures of a woman lying around") {
+		if (selection == 1) {
+			read("I don't know but I feel like I've seen her before, maybe...");
+		}
+	}
+	else if (hidden == "Hmm? I haven't seen a letter around here? What does it say?") {
+		if (selection == 1) {
+			read("Oh. He said he'd make it up to them... I don't know what he meant.");
 		}
 	}
 	else {
