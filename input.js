@@ -204,9 +204,9 @@ function submission() {
 	}
 	
 	//Flavor Clues
-	else if (input.indexOf("book") !== -1) {
+	else if (input.indexOf(" book ") !== -1) {
 		//Checks if 'book' is a substring of input string		
-		read("I think I saw him writing in one of them...");
+		read("I think I saw him writing in a book...");
 	}
 	else if (input.indexOf("pictures") !== -1 || check("photos")) {
 		doResponse1("I saw a lot of pictures of a woman lying around", "Who is she?");
@@ -266,12 +266,30 @@ function submission() {
 	else if (check("bathtub") || check("bathroom")) {
 		read("Teehee. Did I scare you?");
 	}
-	//
+	//pentagram
+	else if (check("pentagram")) {
+		read("That's where... that's where he took me.");
+	}
+	//carpet
+	else if (check("carpet")) {
+		read("I don't remember that carpet being there...");
+	}
+	//bookcase
+	else if (check(" lock ")) {
+		read("He must have kept something important inside.");
+	}
+	else if (check("bookcase")) {
+		read("He visited that bookcase a lot.");
+	}
+	//locker
 	
 	
 	//Easter eggs
-	else if ((input.indexOf("kappa") !== -1 || input.indexOf("keepo") !== -1) && input !== "keepo kappa 123") {
-		read("Everybody type keepo kappa 123 in chat");
+	else if ((input.indexOf("kappa") !== -1) && input !== "keepo kappa 123") {
+		read("Real kappa is PuppeyFace");
+	}
+	else if ((input.indexOf("keepo") !== -1) && input !== "keepo kappa 123") {
+		read("Real keepo is PuppeyFace");
 	}
 	else if (input == "keepo kappa 123") {
 		printLetterByLetter("clue", "I'm... remembering something... http://i.imgur.com/n5LvgA7.gif", 100);
@@ -280,7 +298,7 @@ function submission() {
 		printLetterByLetter("clue", "Look in the closet.", 100);
 	}
 	else if (check("puppeyface")) {
-		read("fite me");
+		read("Look in the closet.");
 	}
 		
 	else if (check("fuck") || check("shit") || check("damn")) {
