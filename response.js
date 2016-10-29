@@ -100,6 +100,11 @@ function response(selection) {
 			read("Oh. He said he'd make it up to them... I don't know what he meant.");
 		}
 	}
+	else if (hidden == "The man who lived here...") {
+		if (selection == 1) {
+			read("I don't want to talk about the bad man...");
+		}
+	}
 	else {
 		output.innerHTML = "The crystal planchette sits motionless on the ouija board.";
 	}
