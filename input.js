@@ -275,7 +275,7 @@ function submission() {
 		read("I don't remember that carpet being there...");
 	}
 	//bookcase
-	else if (check(" lock ")) {
+	else if (check(" lock ") || input.endsWith("lock")) {
 		read("He must have kept something important inside.");
 	}
 	else if (check("bookcase")) {
